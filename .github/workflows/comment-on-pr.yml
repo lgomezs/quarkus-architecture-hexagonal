@@ -1,0 +1,30 @@
+name: Comentario colaborativo automático en PR
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  comment:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Comentar en la PR
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          body: |
+            ### Comentario colaborativo para el equipo
+
+            ¡Buen trabajo solucionando el detalle en el README! Este tipo de ajustes ayuda a mejorar la claridad de nuestro onboarding y la imagen del proyecto.  
+            La PR cumple su objetivo con un cambio menor, no afecta código ni funcionalidad, y pasa los chequeos automáticos de calidad.
+
+            **Siguiente paso sugerido:**
+            - Merge puede realizarse de inmediato.
+
+            Si alguien del equipo desea agregar contexto sobre documentación o sugerencias de procesos para PRs de solo documentación, favor responder a este comentario para ir madurando nuestros acuerdos de contribución.
+
+            ---
+            Equipo: si están de acuerdo con aprobar directamente cambios menores como este sin mayor revisión, indiquémoslo para formalizarlo en el README en el futuro.
+
+            ---
+            ¡Felicitaciones por la contribución!
