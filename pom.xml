@@ -7,12 +7,11 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>order-boot</module>
-        <module>order-domain</module>
-        <module>order-application</module>
-        <module>order-adapter-out-db</module>
-        <module>order-adapter-rest</module>
-        <module>order-adapter-out-kafka</module>
+        <module>domain</module>
+        <module>application</module>
+        <module>infrastructure</module>
+        <module>boot</module>
+        <module>jacoco-report-aggregate</module>
     </modules>
 
     <properties>
@@ -27,6 +26,8 @@
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <blaze-persistence.version>1.6.16</blaze-persistence.version>
+        <lombok.version>1.18.34</lombok.version>
+        <mapstruct.version>1.5.5.Final</mapstruct.version>
     </properties>
 
     <dependencyManagement>
@@ -56,43 +57,51 @@
             <dependency>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
-                <version>1.18.34</version>
+                <version>${lombok.version}</version>
                 <scope>provided</scope>
             </dependency>
 
             <!-- add  dependency modules -->
             <dependency>
                 <groupId>com.pe.order</groupId>
-                <artifactId>order-boot</artifactId>
+                <artifactId>boot</artifactId>
                 <version>${project.version}</version>
             </dependency>
 
             <dependency>
                 <groupId>com.pe.order</groupId>
-                <artifactId>order-domain</artifactId>
+                <artifactId>domain</artifactId>
                 <version>${project.version}</version>
             </dependency>
 
             <dependency>
                 <groupId>com.pe.order</groupId>
-                <artifactId>order-application</artifactId>
+                <artifactId>application</artifactId>
                 <version>${project.version}</version>
             </dependency>
 
             <dependency>
                 <groupId>com.pe.order</groupId>
-                <artifactId>order-adapter-out-db</artifactId>
+                <artifactId>client-adapter</artifactId>
                 <version>${project.version}</version>
             </dependency>
 
             <dependency>
                 <groupId>com.pe.order</groupId>
-                <artifactId>order-adapter-rest</artifactId>
+                <artifactId>client-producer</artifactId>
+                <version>${project.version}</version>
             </dependency>
 
             <dependency>
                 <groupId>com.pe.order</groupId>
-                <artifactId>order-adapter-out-kafka</artifactId>
+                <artifactId>repository</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.pe.order</groupId>
+                <artifactId>jacoco-report-aggregate</artifactId>
+                <version>${project.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
