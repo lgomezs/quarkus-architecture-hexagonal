@@ -1,7 +1,7 @@
 services:
   postgres:
     image: postgres:15
-    container_name: postgres-customer
+    container_name: postgres-customer-db
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
@@ -9,7 +9,8 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - "./postgres/scripts:/docker-entrypoint-initdb.d"
+      #- postgres_data:/var/lib/postgresql/data
 
   redpanda:
     image: docker.redpanda.com/redpandadata/redpanda:latest
