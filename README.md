@@ -1,121 +1,284 @@
-# order-app-quarkus
+# Quarkus Hexagonal Architecture
 
-This project uses Quarkus, the Supersonic Subatomic Java Framework.
+> Production-ready reference project demonstrating **Hexagonal Architecture (Ports & Adapters)**, **DDD**, and **Quarkus 3**.
 
-If you want to learn more about Quarkus, please visit its website: <https://quarkus.io/>.
+## Table of Contents
 
-## Running the application in dev mode
+1. Overview
+2. Goals
+3. Architecture
+4. Project Structure
+5. Domain Model
+6. Database Model
+7. API
+8. Technologies
+9. Running the Project
+10. Configuration
+11. Testing
+12. Roadmap
+13. Antora Documentation
 
-You can run your application in dev mode that enables live coding using:
+---
 
-```shell script
-./mvnw quarkus:dev
+# 1. Overview
+
+This project is a reference implementation of a clean enterprise architecture using Quarkus.
+
+It demonstrates:
+
+- Hexagonal Architecture
+- Domain Driven Design
+- Repository Pattern
+- Use Cases
+- Value Objects
+- MapStruct
+- Hibernate ORM
+
+# 2. Goals
+
+- Separate business rules from infrastructure.
+- Keep the domain independent of frameworks.
+- Make adapters replaceable.
+- Simplify testing.
+- Serve as a template for enterprise applications.
+
+# 3. Architecture
+
+```text
+                Client
+                   │
+                   ▼
+          REST Controller
+                   │
+                   ▼
+            Application Layer
+          (Use Cases / Services)
+                   │
+          Inbound / Outbound Ports
+                   │
+                   ▼
+               Domain
+        (Business Rules)
+                   │
+          Repository Port
+                   │
+                   ▼
+          Persistence Adapter
+             (Hibernate/JPA)
+                   │
+                   ▼
+              PostgreSQL
 ```
 
-> **_NOTE:_**  Quarkus now ships with a Dev UI, which is available in dev mode only at <http://localhost:8080/q/dev/>.
+## Layers
 
-## Packaging and running the application
+| Layer | Responsibility |
+|-------|----------------|
+| Domain | Business rules |
+| Application | Use cases |
+| Infrastructure | REST, DB, Kafka |
+| Bootstrap | Quarkus startup |
 
-The application can be packaged using:
+# 4. Project Structure
 
-```shell script
-./mvnw package
+```text
+src
+├── main
+│   ├── java
+│   │   ├── application
+│   │   ├── domain
+│   │   ├── infrastructure
+│   │   └── bootstrap
+│   └── resources
 ```
 
-It produces the `quarkus-run.jar` file in the `target/quarkus-app/` directory.
-Be aware that it’s not an _über-jar_ as the dependencies are copied into the `target/quarkus-app/lib/` directory.
+# 5. Domain Model
 
-The application is now runnable using `java -jar target/quarkus-app/quarkus-run.jar`.
+## Order
 
-If you want to build an _über-jar_, execute the following command:
+| Field | Description |
+|-------|-------------|
+| id | Identifier |
+| code | Business code |
+| description | Description |
+| items | Order lines |
 
-#### dependency module boot
-    <!-- Observability optional -->
-    <dependency>
-      <groupId>io.quarkus</groupId>
-      <artifactId>quarkus-micrometer-registry-prometheus</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>io.quarkus</groupId>
-      <artifactId>quarkus-arc</artifactId>
-    </dependency>
+## Item
 
-    <!-- All Internal modules -->
+| Field | Description |
+|-------|-------------|
+| model | Model |
+| quality | Quality |
+| quantity | Quantity |
 
-#### dependency module domain
-    <!-- Observability optional -->
-     <dependency>
-      <groupId>io.quarkus</groupId>
-      <artifactId>quarkus-arc</artifactId>
-    </dependency>
+# 6. Database Model
 
-#### dependency module application
-     <!-- module domain-->
+## orders
 
-#### dependency module rest
-    <!-- module application-->
+| Column | Type |
+|---------|------|
+| id | INTEGER |
+| code | VARCHAR |
+| description | VARCHAR |
 
-#### dependency module BD
-    <!-- module domain-->
-  
-    private OrderEntity toEntity(Order order) {
-        final OrderEntity orderEntity = new OrderEntity();
-        orderEntity.setCode(order.getOrderCode().value());
-        orderEntity.setDescription(order.getOrderDescription().value());
-        orderEntity.setItems(order.getItemList().stream().map(items -> {
-        final OrderLineEntity itemEntity = new OrderLineEntity();
-        itemEntity.setModel(items.modelo());
-        itemEntity.setQuality(items.calidad());
-        itemEntity.setQuantity(items.quantity());
-        return itemEntity;
-        }).toList());
+## order_lines
 
-		return orderEntity;
-	}
+| Column | Type |
+|---------|------|
+| id | INTEGER |
+| model | INTEGER |
+| quality | INTEGER |
+| quantity | INTEGER |
+| order_id | INTEGER FK |
 
+Relationship
 
-#### dependency module Kafka in
-     <!-- module application-->
-
-#### dependency module Kafka out
-     <!-- module domain-->
-
-## Minikube create topic en panda
-
-kubectl exec -it redpanda-0 -n applications -- rpk topic create orders -p 1 -r 1
-kubectl exec -it redpanda-0 -n applications -- rpk topic create products -p 1 -r 1
-
-kubectl exec -it redpanda-0 -n applications -- rpk topic list
-
-```shell script
-./mvnw package -Dquarkus.package.jar.type=uber-jar
+```text
+orders
+   1
+   │
+   │
+   *
+order_lines
 ```
 
-The application, packaged as an _über-jar_, is now runnable using `java -jar target/*-runner.jar`.
+# 7. REST API
 
-## Creating a native executable
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | /orders | List orders |
+| GET | /orders/{id} | Get order |
+| POST | /orders | Create order |
+| PUT | /orders/{id} | Update order |
+| DELETE | /orders/{id} | Delete order |
 
-You can create a native executable using:
+## Example Request
 
-```shell script
-./mvnw package -Dnative
+```json
+{
+  "code":"ORD-001",
+  "description":"Sample Order",
+  "items":[
+    {
+      "model":10,
+      "quality":1,
+      "quantity":100
+    }
+  ]
+}
 ```
 
-Or, if you don't have GraalVM installed, you can run the native executable build in a container using:
+# 8. Technologies
 
-```shell script
-./mvnw package -Dnative -Dquarkus.native.container-build=true
+| Technology | Version |
+|------------|---------|
+| Java | 17 |
+| Quarkus | 3.x |
+| Hibernate ORM | Latest |
+| JPA | Jakarta |
+| MapStruct | 1.6.x |
+| Lombok | Latest |
+| Maven | 3.9+ |
+
+# 9. Running
+
+## Requirements
+
+- Java 17
+- Maven
+- PostgreSQL
+
+Clone
+
+```bash
+git clone https://github.com/lgomezs/quarkus-architecture-hexagonal.git
 ```
 
-You can then execute your native executable with: `./target/order-app-quarkus-1.0.0-SNAPSHOT-runner`
+Build
 
-If you want to learn more about building native executables, please consult <https://quarkus.io/guides/maven-tooling>.
+```bash
+mvn clean install
+```
 
-## Provided Code
+Run
 
-### REST
+```bash
+mvn quarkus:dev
+```
 
-Easily start your REST Web Services
+Swagger
 
-[Related guide section...](https://quarkus.io/guides/getting-started-reactive#reactive-jax-rs-resources)
+```
+http://localhost:8080/q/swagger-ui
+```
 
+Health
+
+```
+http://localhost:8080/q/health
+```
+
+# 10. Configuration
+
+Example:
+
+```properties
+quarkus.datasource.db-kind=postgresql
+quarkus.datasource.jdbc.url=jdbc:postgresql://localhost:5432/orders
+quarkus.datasource.username=postgres
+quarkus.datasource.password=postgres
+```
+
+# 11. Testing
+
+```bash
+mvn test
+```
+
+# 12. Roadmap
+
+- Kafka
+- Redis
+- OpenTelemetry
+- Prometheus
+- Grafana
+- Docker
+- Kubernetes
+- GitHub Actions
+- Testcontainers
+- CQRS
+- Event Sourcing
+
+# 13. Antora Documentation
+
+Recommended structure:
+
+```text
+docs/
+└── modules/
+    └── ROOT/
+        ├── pages/
+        │   ├── architecture.adoc
+        │   ├── domain.adoc
+        │   ├── persistence.adoc
+        │   ├── api.adoc
+        │   └── deployment.adoc
+        ├── images/
+        └── nav.adoc
+```
+
+Suggested future pages:
+
+- Architecture Decision Records
+- Sequence Diagrams
+- Component Diagrams
+- ER Diagram
+- Deployment Guide
+- Observability
+- Security
+- Performance
+- Coding Standards
+
+## License
+
+MIT
