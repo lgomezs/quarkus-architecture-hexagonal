@@ -6,17 +6,17 @@
 
     <parent>
         <groupId>com.pe.order</groupId>
-        <artifactId>order-app-quarkus</artifactId>
+        <artifactId>infrastructure</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>order-adapter-out-kafka</artifactId>
-    <name>order-adapter-out-kafka</name>
+    <artifactId>client-producer</artifactId>
+    <packaging>jar</packaging>
 
     <dependencies>
         <dependency>
             <groupId>com.pe.order</groupId>
-            <artifactId>order-application</artifactId>
+            <artifactId>application</artifactId>
         </dependency>
 
         <dependency>
@@ -35,21 +35,22 @@
 
     </dependencies>
 
-     <build>
-         <plugins>
-           <plugin>
-             <groupId>org.jboss.jandex</groupId>
-             <artifactId>jandex-maven-plugin</artifactId>
-             <version>1.2.3</version>
-             <executions>
-               <execution>
-                 <id>make-index</id>
-                 <goals>
-                   <goal>jandex</goal>
-                 </goals>
-               </execution>
-             </executions>
-           </plugin>
-         </plugins>
-       </build>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.jboss.jandex</groupId>
+                <artifactId>jandex-maven-plugin</artifactId>
+                <version>1.2.3</version>
+                <executions>
+                    <execution>
+                        <id>make-index</id>
+                        <goals>
+                            <goal>jandex</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
 </project>

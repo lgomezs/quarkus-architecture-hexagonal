@@ -10,42 +10,14 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>order-adapter-out-db</artifactId>
-    <name>order-adapter-out-db</name>
+    <artifactId>domain</artifactId>
+    <packaging>jar</packaging>
 
     <dependencies>
-        <dependency>
-            <groupId>com.pe.order</groupId>
-            <artifactId>order-domain</artifactId>
-        </dependency>
-
-        <!-- DB / JPA -->
-        <dependency>
-            <groupId>io.quarkus</groupId>
-            <artifactId>quarkus-hibernate-orm</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>io.quarkus</groupId>
-            <artifactId>quarkus-jdbc-postgresql</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.blazebit</groupId>
-            <artifactId>blaze-persistence-integration-quarkus-3</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.blazebit</groupId>
-            <artifactId>blaze-persistence-integration-hibernate-6.2</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>io.quarkus</groupId>
-            <artifactId>quarkus-smallrye-openapi</artifactId>
-        </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
         </dependency>
-
     </dependencies>
 
     <build>
@@ -65,7 +37,5 @@
             </plugin>
         </plugins>
     </build>
-
-
 
 </project>
