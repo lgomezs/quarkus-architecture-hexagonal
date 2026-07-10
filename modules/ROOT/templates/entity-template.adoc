@@ -1,0 +1,8 @@
+= Entidad Template
+
+Nombre de la entidad: 
+Atributos:
+
+Relaciones:
+
+Invariants / Reglas de negocio:

@@ -1,0 +1,11 @@
+== Guía Docker
+
+Resumen y comandos para construir y ejecutar con Docker.
+
+[source,bash]
+----
+# Build
+docker build -t quarkus-app .
+# Run
+docker run -p 8080:8080 quarkus-app
+----

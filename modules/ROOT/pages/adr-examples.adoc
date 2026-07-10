@@ -1,0 +1,5 @@
+== ADR - Arquitectural Decision Records
+
+Plantilla y ejemplo de ADR.
+
+include::../../templates/adr-template.adoc[]

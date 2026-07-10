@@ -1,0 +1,3 @@
+== Integración Continua - Plantillas
+
+Ejemplos de workflows para GitHub Actions.

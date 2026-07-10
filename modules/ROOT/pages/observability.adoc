@@ -1,0 +1,3 @@
+== Observabilidad
+
+Logs, métricas y trazas distribuidas (OpenTelemetry, Prometheus, Grafana).

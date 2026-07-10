@@ -1,0 +1,3 @@
+== Pruebas
+
+Estrategia de pruebas: unitarias, integración y contract tests.

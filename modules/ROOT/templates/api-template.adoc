@@ -1,0 +1,12 @@
+= API REST Template
+
+Nombre: 
+Path: /api/v1/...
+Método: GET/POST/PUT/DELETE
+Request:
+
+Response:
+
+Ejemplo:
+
+Notas:

@@ -1,0 +1,5 @@
+== Arquitectura
+
+Explicación general del enfoque hexagonal aplicado al ejemplo.
+
+include::../architecture.adoc[]

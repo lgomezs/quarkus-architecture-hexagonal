@@ -1,0 +1,3 @@
+== CI / CD
+
+Configuración recomendada para pipelines y releases.

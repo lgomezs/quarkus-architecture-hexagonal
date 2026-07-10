@@ -1,0 +1,6 @@
+= Índice
+:page-layout: default
+
+Bienvenido al sitio de documentación generado con Antora para el proyecto Quarkus Architecture Hexagonal.
+
+include::{modules}/ROOT/pages/overview.adoc[]

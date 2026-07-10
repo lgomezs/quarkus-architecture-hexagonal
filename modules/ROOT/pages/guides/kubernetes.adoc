@@ -1,0 +1,5 @@
+== Guía Kubernetes
+
+Ejemplo de recursos Kubernetes para desplegar la aplicación.
+
+include::kubernetes-manifests.adoc[]

@@ -1,0 +1,5 @@
+== Plantilla API REST
+
+Ejemplo de plantilla para definir endpoints REST.
+
+include::../../templates/api-template.adoc[]

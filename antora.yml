@@ -1,0 +1,7 @@
+name: quarkus-architecture-hexagonal
+version: 1.0.0
+title: Quarkus Architecture Hexagonal
+nav: modules/ROOT/nav.adoc
+start_page: modules/ROOT/pages/index.adoc
+
+# Descriptor de componente Antora (placeholder)

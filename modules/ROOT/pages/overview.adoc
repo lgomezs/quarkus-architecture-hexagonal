@@ -1,0 +1,7 @@
+== Visión general
+
+Esta documentación contiene la estructura arquitectónica, guías y plantillas para el proyecto de ejemplo "Quarkus Architecture Hexagonal".
+
+- Arquitectura hexagonal
+- Guías de despliegue
+- Plantillas (ADR, APIs, Entidades)
