@@ -1,5 +1,0 @@
-== Plantilla de Entidades
-
-Plantilla para documentar entidades del dominio.
-
-include::../../templates/entity-template.adoc[]

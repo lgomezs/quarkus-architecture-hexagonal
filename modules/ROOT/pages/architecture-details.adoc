@@ -1,3 +1,0 @@
-== Arquitectura - Detalles
-
-Aquí se describen los componentes, puertos y adaptadores en el proyecto.

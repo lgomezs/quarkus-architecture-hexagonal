@@ -1,3 +1,0 @@
-== Ejemplos
-
-Ejemplos de uso y patrones comunes.

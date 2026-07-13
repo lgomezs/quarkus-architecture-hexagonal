@@ -1,3 +1,0 @@
-== Integración
-
-Patrones de integración con servicios externos y colas de mensajes.

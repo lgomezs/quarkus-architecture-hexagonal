@@ -1,3 +1,0 @@
-== Ejemplo de Pull Request de Documentación
-
-Plantilla de contenido para PRs relacionados con docs.

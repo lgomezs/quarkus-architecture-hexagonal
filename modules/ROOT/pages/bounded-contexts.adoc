@@ -1,3 +1,0 @@
-== Bounded Contexts
-
-Identificación de contextos delimitados y responsabilidades.

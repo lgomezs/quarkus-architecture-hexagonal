@@ -1,3 +1,0 @@
-= Plantillas
-
-Plantillas para ADR y documentación reutilizable.

@@ -1,9 +1,0 @@
-== Guía para desarrolladores
-
-Cómo contribuir, ejecutar localmente y ejecutar tests.
-
-[source,bash]
-----
-# Ejecutar con Maven
-./mvnw quarkus:dev
-----

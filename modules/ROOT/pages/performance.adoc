@@ -1,3 +1,0 @@
-== Rendimiento
-
-Consideraciones de performance y optimizaciones.

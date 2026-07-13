@@ -1,13 +1,17 @@
 site:
-  title: "Quarkus Architecture - Sitio Antora"
-  start_page: "quarkus-architecture-hexagonal::index.adoc"
-  url: "./site"
-components:
-  - name: quarkus-architecture-hexagonal
-    version: 1.0.0
-    title: "Quarkus Architecture Hexagonal"
-    nav: modules/ROOT/nav.adoc
-    start_page: modules/ROOT/pages/index.adoc
+  title: Quarkus Architecture
+  start_page: quarkus-architecture-hexagonal::index.adoc
 
-# Playbook básico para generar el sitio Antora
-# Ejecutar: antora antora-playbook.yml
+content:
+  sources:
+    - url: .
+      branches: HEAD
+      start_path: docs
+
+ui:
+  bundle:
+    url: https://gitlab.com/antora/antora-ui-default/-/jobs/artifacts/HEAD/raw/build/ui-bundle.zip?job=bundle-stable
+    snapshot: true
+
+output:
+  dir: ./build/site
