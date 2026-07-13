@@ -1,0 +1,6 @@
+== Principios
+
+* Arquitectura Hexagonal
+* SOLID
+* Inversión de dependencias
+* DDD táctico

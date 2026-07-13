@@ -251,6 +251,13 @@ mvn test
 
 # 13. Antora Documentation
 
+This repository now contains an initial structure for publishing documentation with Antora.
+
+How to generate the site (locally):
+
+1. Install Antora (npm install -g @antora/cli @antora/site-generator-default)
+2. Run: antora antora-playbook.yml
+
 Recommended structure:
 
 ```text
@@ -282,3 +289,5 @@ Suggested future pages:
 ## License
 
 MIT
+
+

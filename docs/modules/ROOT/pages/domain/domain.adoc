@@ -1,0 +1,3 @@
+= Dominio
+
+El dominio contiene las reglas de negocio puras. No depende de Quarkus, JPA ni Kafka.

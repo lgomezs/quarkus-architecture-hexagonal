@@ -1,0 +1,59 @@
+= Architecture
+
+The application follows the *Hexagonal Architecture* (Ports & Adapters) style, isolating business rules from technical concerns such as REST, persistence, and messaging.
+
+== Request Flow
+
+[source]
+----
+        Client
+           │
+           ▼
+  REST Controller
+           │
+           ▼
+    Application Layer
+  (Use Cases / Services)
+           │
+  Inbound / Outbound Ports
+           │
+           ▼
+       Domain
+(Business Rules)
+           │
+  Repository Port
+           │
+           ▼
+  Persistence Adapter
+     (Hibernate/JPA)
+           │
+           ▼
+      PostgreSQL
+----
+
+== Layers
+
+[cols="1,2"]
+|===
+| Layer | Responsibility
+
+| Domain
+| Business rules
+
+| Application
+| Use cases
+
+| Infrastructure
+| REST, DB, Kafka
+
+| Bootstrap
+| Quarkus startup
+|===
+
+== Design Principles
+
+* The *Domain* layer has no dependency on frameworks; it only expresses business rules and invariants.
+* The *Application* layer orchestrates use cases and depends on ports (interfaces), never on concrete adapters.
+* *Inbound ports* define how the outside world calls into the application (e.g. REST controllers implement inbound use cases).
+* *Outbound ports* define what the application needs from the outside world (e.g. persistence, messaging), implemented by adapters in the *Infrastructure* layer.
+* The *Bootstrap* module wires everything together and starts the Quarkus runtime.

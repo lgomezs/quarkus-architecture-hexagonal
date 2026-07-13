@@ -1,0 +1,7 @@
+= Flujo de una petición
+
+. Cliente invoca OrderResource
+. OrderResource delega a OrderCaseUse
+. El caso de uso usa los puertos
+. Infrastructure implementa los puertos
+. Se persiste en PostgreSQL y se publica un evento Kafka.

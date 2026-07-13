@@ -1,0 +1,3 @@
+= Value Objects
+
+Los Value Objects identificados incluyen `OrderCode` y `OrderDescription`, encapsulando validaciones y evitando tipos primitivos.

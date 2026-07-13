@@ -1,0 +1,3 @@
+= Entity Item
+
+`Item` representa una línea de la orden y forma parte del agregado `Order`.
