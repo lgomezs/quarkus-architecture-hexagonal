@@ -1,0 +1,3 @@
+= Aggregate Order
+
+`Order` representa el agregado raíz. Coordina la creación y validación de los Items asociados.

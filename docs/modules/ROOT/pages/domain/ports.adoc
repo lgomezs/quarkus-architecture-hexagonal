@@ -1,0 +1,9 @@
+= Puertos
+
+== OrderRepository
+
+Puerto de persistencia consumido por los casos de uso.
+
+== OrderEventPublisher
+
+Puerto para publicar eventos del dominio sin acoplarse a Kafka.

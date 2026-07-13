@@ -1,0 +1,10 @@
+= Arquitectura Hexagonal
+
+== Módulos
+
+* domain
+* application
+* infrastructure
+* boot
+
+Las dependencias siempre apuntan hacia el dominio.

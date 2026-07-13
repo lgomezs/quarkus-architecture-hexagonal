@@ -1,0 +1,5 @@
+flowchart LR
+Client-->REST-->UseCase-->Domain
+UseCase-->Repository
+Repository-->DB
+UseCase-->Publisher-->Kafka

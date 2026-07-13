@@ -1,0 +1,13 @@
+= Modelo del Dominio
+
+[mermaid]
+....
+classDiagram
+class Order
+class Item
+class OrderCode
+class OrderDescription
+Order "1" *-- "*" Item
+Order --> OrderCode
+Order --> OrderDescription
+....

@@ -1,0 +1,6 @@
+= Reglas de dependencia
+
+[source,text]
+----
+REST -> Application -> Domain <- Infrastructure
+----
