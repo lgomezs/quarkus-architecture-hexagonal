@@ -21,32 +21,9 @@ buildNumber.properties
 .mvn/timing.properties
 .mvn/wrapper/maven-wrapper.jar
 
-## IntelliJ
-out/
-.idea/
-.idea_modules/
-*.iml
-*.ipr
-*.iws
-
 ## Visual Studio Code
 .vscode/
 .code-workspace
-
-## Eclipse
-.settings/
-bin/
-tmp/
-.metadata
-.classpath
-.project
-*.tmp
-*.bak
-*.swp
-*~.nib
-local.properties
-.loadpath
-.factorypath
 
 ## NetBeans
 nbproject/private/
@@ -56,9 +33,6 @@ dist/
 nbdist/
 nbactions.xml
 nb-configuration.xml
-
-## OS X
-.DS_Store
 
 ## logs
 *.log
